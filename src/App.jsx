@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import {
+  EmptyState,
+  AddProceduresModal,
+  ProceduresList,
+  Button,
+} from "./components";
+import { useProcedures } from "./context/proceduresContext";
+import pencil from "./assets/pencil.svg";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { savedProcedures } = useProcedures();
+
+  const toggleModalVisibility = () => setIsModalOpen((prevValue) => !prevValue);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <main className="h-screen py-20 px-20 sm:p-20 flex flex-col gap-[34px]">
+      <h1 className="text-2xl text-center sm:text-left">Procedimientos</h1>
+      {savedProcedures.length ? (
+        <>
+          <ProceduresList />
+          <Button
+            text="Editar procedimientos"
+            onClick={toggleModalVisibility}
+            icon={<img src={pencil} />}
+            className="self-start"
+          />
+        </>
+      ) : (
+        <EmptyState onAddNew={toggleModalVisibility} />
+      )}
+
+      <AddProceduresModal
+        isModalOpen={isModalOpen}
+        onClose={toggleModalVisibility}
+      />
+    </main>
+  );
 }
 
-export default App
+export default App;
