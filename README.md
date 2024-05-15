@@ -1,8 +1,35 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Steps to run the project:
 
-Currently, two official plugins are available:
+- Clone the repository:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+    git clone https://github.com/mrdavid0614/procedures-listing-test.git
+```
+
+- Now you need to move inside the project directory:
+
+```bash
+    cd procedures-listing-test
+```
+
+- Install the project dependencies:
+
+```bash
+    npm install
+```
+
+- Run the project:
+
+```bash
+    npm run dev
+```
+
+Finally, open the browser with the url printed on the terminal.
+
+
+<img width="1512" alt="image" src="https://github.com/mrdavid0614/procedures-listing-test/assets/61632625/41af4400-8be6-432b-891e-9b8e62a2c56b">
+
+
+You made it!!
